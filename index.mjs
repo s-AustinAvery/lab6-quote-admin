@@ -8,7 +8,6 @@ const __dirname = path.dirname(__filename);
 
 //express app
 const app = express();
-const port = 3000;
 
 //view engine set up
 app.set('view engine', 'ejs');
@@ -398,8 +397,9 @@ app.get('/quote/delete', async (req, res) => {
 });
 
 //server start
+const port = process.env.PORT || 3000;
 app.listen(port, () => {
-    console.log(`server running on http://localhost:${port}`);
+    console.log(`Server running on port ${port}`);
 });
 
 export { conn };
