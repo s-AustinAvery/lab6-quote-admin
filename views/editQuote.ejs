@@ -1,0 +1,47 @@
+<%- include('partials/header'); %>
+
+<h2>Editing Quote</h2>
+
+<form method="POST" action="/quote/edit">
+
+    <!-- used to konw which quote is being edited -->
+    <input type="hidden" name="quoteId" value="<%= quote.quoteId %>">
+
+    <label>
+        Quote Text:
+        <input type="text" name="quote" value="<%= quote.quote %>" required>
+    </label>
+    <br>
+
+    <label>
+        Author:
+        <select name="authorId" required>
+        <% authors.forEach(a => { %>
+            <option value="<%= a.authorId %>"
+            <% if (a.authorId === quote.authorId) { %> selected <% } %>>
+            <%= a.firstName %> <%= a.lastName %>
+            </option>
+        <% }) %>
+        </select>
+    </label>
+    <br>
+
+    <label>
+        Category:
+        <select name="category">
+        <option value="">-- Select Category --</option>
+        <% categories.forEach(cat => { %>
+            <option value="<%= cat.category %>"
+            <% if (cat.category === quote.category) { %> selected <% } %>>
+            <%= cat.category %>
+            </option>
+        <% }) %>
+        </select>
+    </label>
+    <br><br>
+
+    <button type="submit">Update Quote</button>
+
+</form>
+
+<%- include('partials/footer'); %>

@@ -1,0 +1,20 @@
+<%- include('partials/header'); %>
+
+<h2>Update / Delete Authors</h2>
+
+<% if (authors.length === 0) { %>
+    <p>No authors found.</p>
+<% } else { %>
+    <% for (let i = 0; i < authors.length; i++) { %>
+        <div class="author-item">
+            <a href="/author/edit?authorId=<%= authors[i].authorId %>">UPDATE</a>
+            &nbsp;
+            <a href="/author/delete?authorId=<%= authors[i].authorId %>">DELETE</a>
+            &nbsp;
+            <%= authors[i].firstName %> <%= authors[i].lastName %>
+            <br>
+        </div>
+    <% } %>
+<% } %>
+
+<%- include('partials/footer'); %>

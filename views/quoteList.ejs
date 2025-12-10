@@ -1,0 +1,24 @@
+<%- include('partials/header'); %>
+
+<h2>Update / Delete Quotes</h2>
+
+<% if (quotes.length === 0) { %>
+    <p>No quotes found.</p>
+<% } else { %>
+    <% for (let i = 0; i < quotes.length; i++) { %>
+        <div class="quote-item">
+            <a href="/quote/edit?quoteId=<%= quotes[i].quoteId %>">UPDATE</a>
+            &nbsp;
+            <a href="/quote/delete?quoteId=<%= quotes[i].quoteId %>">DELETE</a>
+            &nbsp;
+            "<%= quotes[i].quote %>"
+            - <%= quotes[i].firstName %> <%= quotes[i].lastName %>
+            <% if (quotes[i].category) { %>
+                [<%= quotes[i].category %>]
+            <% } %>
+            <br>
+        </div>
+    <% } %>
+<% } %>
+
+<%- include('partials/footer'); %>

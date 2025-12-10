@@ -1,0 +1,31 @@
+<%- include('partials/header'); %>
+
+<h2>Adding a New Author</h2>
+
+<% if (typeof message !== 'undefined') { %>
+    <h3><%= message %></h3>
+<% } %>
+
+<form method="POST" action="/author/new">
+    <label>
+        First Name:
+        <input type="text" name="fName" required>
+    </label>
+    <br>
+
+    <label>
+        Last Name:
+        <input type="text" name="lName" required>
+    </label>
+    <br>
+
+    <label>
+        Date of Birth:
+        <input type="date" name="birthDate">
+    </label>
+    <br><br>
+
+    <button type="submit">Add Author</button>
+</form>
+
+<%- include('partials/footer'); %>

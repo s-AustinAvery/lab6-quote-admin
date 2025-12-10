@@ -1,0 +1,43 @@
+<%- include('partials/header'); %>
+
+<h2>Adding a New Quote</h2>
+
+<% if (typeof message !== 'undefined') { %>
+    <h3><%= message %></h3>
+<% } %>
+
+<form method="POST" action="/quote/new">
+    <label>
+        Enter Quote:
+        <input type="text" name="quote" required>
+    </label>
+    <br>
+
+    <label>
+        Author:
+        <select name="authorId" required>
+            <option value="">-- Select Author --</option>
+            <% authors.forEach(author => { %>
+                <option value="<%= author.authorId %>">
+                <%= author.firstName %> <%= author.lastName %>
+                </option>
+            <% }) %>
+        </select>
+    </label>
+    <br>
+
+    <label>
+        Category:
+        <select name="category">
+            <option value="">-- Select Category --</option>
+            <% categories.forEach(cat => { %>
+                <option value="<%= cat.category %>"><%= cat.category %></option>
+            <% }) %>
+        </select>
+    </label>
+    <br><br>
+
+    <button type="submit">Add Quote</button>
+</form>
+
+<%- include('partials/footer'); %>

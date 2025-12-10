@@ -1,0 +1,43 @@
+<%- include('partials/header'); %>
+
+<h2>Updating Author</h2>
+
+<form method="POST" action="/author/edit">
+
+    <!-- used to konw which quote is being edited -->
+    <input type="hidden" name="authorId" value="<%= authorInfo[0].authorId %>">
+
+    <label>
+        First Name:
+        <input type="text" name="fName" value="<%= authorInfo[0].firstName %>">
+    </label>
+    <br>
+
+    <label>
+        Last Name:
+        <input type="text" name="lName" value="<%= authorInfo[0].lastName %>">
+    </label>
+    <br>
+
+    <label>
+        Date of Birth:
+        <input type="date" name="dob" value="<%= authorInfo[0].dobISO %>">
+    </label>
+    <br>
+
+    <label>
+        Sex:
+        <input type="radio" name="sex" value="M"
+        <% if (authorInfo[0].sex === 'M') { %> checked <% } %>
+        > Male
+
+        <input type="radio" name="sex" value="F"
+        <% if (authorInfo[0].sex === 'F') { %> checked <% } %>
+        > Female
+    </label>
+    <br><br>
+
+    <button type="submit">Update Author</button>
+</form>
+
+<%- include('partials/footer'); %>
